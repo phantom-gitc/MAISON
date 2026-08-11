@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAISON — Editorial Fashion Portfolio</title>
+    <meta name="description" content="MAISON — A curated editorial fashion portfolio. Quiet luxury, timeless silhouettes, and intentional design.">
+    <!-- Resource Preconnects for Faster Asset Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ══════════ PRELOADER ══════════ -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="pre-inner">
+            <div class="pre-logo" id="preLogo">
+                <span class="pre-char">M</span>
+                <span class="pre-char">A</span>
+                <span class="pre-char">I</span>
+                <span class="pre-char">S</span>
+                <span class="pre-char">O</span>
+                <span class="pre-char">N</span>
+            </div>
+            <div class="pre-tagline">Editorial Fashion Portfolio</div>
+        </div>
+        <div class="pre-progress">
+            <div class="pre-bar" id="preBar"></div>
+        </div>
+        <div class="pre-count" id="preCount">0</div>
+        <div class="pre-curtain" id="preCurtain"></div>
+    </div>
+
+    <!-- ══════════ CURSOR DOT ══════════ -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ══════════ NAVBAR ══════════ -->
+    <header class="navbar" id="navbar">
+        <div class="nav-left">
+            <span class="nav-tag">EST. 2024</span>
+        </div>
+        <a href="#home" class="nav-brand">MAISON</a>
+        <nav class="nav-right">
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#collection" class="nav-link">Collection</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-cta">
+                <span>Inquire</span>
+            </a>
+        </nav>
+        <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+            <span></span><span></span>
+        </button>
+    </header>
+
+    <!-- ══════════ SVG DISPLACEMENT / NOISE FILTER ══════════ -->
+    <svg style="display:none;" aria-hidden="true">
+        <defs>
+            <!-- Fluid distortion filter for image hover & hero liquid effect -->
+            <filter id="fluid-distort">
+                <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="3" result="noise" id="fe-turbulence">
+                    <animate attributeName="baseFrequency" dur="10s" values="0.015 0.02; 0.03 0.01; 0.015 0.02" repeatCount="indefinite" />
+                </feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            
+            <!-- Intense warp filter for interactive image reveal -->
+            <filter id="warp-reveal">
+                <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="warp" />
+                <feDisplacementMap in="SourceGraphic" in2="warp" scale="35" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- ══════════ FLOATING AMBIENT LIQUID SVG BLOBS ══════════ -->
+    <div class="ambient-blobs-layer" aria-hidden="true">
+        <svg class="blob-svg blob-1" viewBox="0 0 500 500">
+            <path d="M420,320Q360,440,240,430Q120,420,80,310Q40,200,130,110Q220,20,330,80Q440,140,420,320Z" fill="var(--rose)" opacity="0.12" />
+        </svg>
+        <svg class="blob-svg blob-2" viewBox="0 0 500 500">
+            <path d="M380,300Q310,400,200,390Q90,380,60,260Q30,140,140,80Q250,20,350,100Q450,180,380,300Z" fill="#A0725A" opacity="0.08" />
+        </svg>
+    </div>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="src/E-Img1.png" alt="Editorial — sage green knit portrait" class="hero-img" fetchpriority="high" decoding="sync">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- SVG 1: Hero background decorative arc — draws in on load -->
+        <svg class="hero-arc-svg" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+            <path class="hero-arc" d="M 580 580 Q 300 -60 20 580" />
+            <path class="hero-arc hero-arc-2" d="M 560 580 Q 300 -20 40 580" />
+            <circle class="hero-arc-dot" cx="580" cy="580" r="4" />
+        </svg>
+
+        <!-- SVG Interactive Constellation Grid Overlay -->
+        <svg class="hero-constellation-svg" viewBox="0 0 1000 1000" fill="none" aria-hidden="true">
+            <g class="constellation-nodes">
+                <circle cx="150" cy="200" r="3" class="node-pulse" />
+                <circle cx="450" cy="120" r="2" class="node-pulse" />
+                <circle cx="850" cy="300" r="4" class="node-pulse" />
+                <circle cx="700" cy="750" r="3" class="node-pulse" />
+                <circle cx="250" cy="800" r="2" class="node-pulse" />
+            </g>
+            <g class="constellation-lines">
+                <line x1="150" y1="200" x2="450" y2="120" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4 4" />
+                <line x1="450" y1="120" x2="850" y2="300" stroke="rgba(255,255,255,0.12)" stroke-dasharray="6 6" />
+                <line x1="850" y1="300" x2="700" y2="750" stroke="rgba(255,255,255,0.15)" stroke-dasharray="3 5" />
+                <line x1="700" y1="750" x2="250" y2="800" stroke="rgba(255,255,255,0.1)" stroke-dasharray="5 5" />
+            </g>
+        </svg>
+
+        <!-- Floating edition badge -->
+        <div class="hero-badge">
+            <span class="badge-inner">SS<br>2024</span>
+        </div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">
+                <span class="eye-line"></span>
+                Editorial Portfolio — 2024
+            </p>
+            <h1 class="hero-title">
+                Quiet<br><em>Luxury</em>
+            </h1>
+            <!-- SVG 2: Italic underline flourish under headline -->
+            <svg class="title-flourish-svg" viewBox="0 0 320 28" fill="none" aria-hidden="true">
+                <path class="flourish-path"
+                    d="M 4 22 C 40 8, 100 28, 160 14 C 220 2, 280 24, 316 10" />
+                <path class="flourish-path flourish-path-2"
+                    d="M 20 24 C 60 18, 130 26, 180 16" />
+            </svg>
+            <p class="hero-body">
+                A collection that speaks in whispers.<br>
+                Curated for those who dress with intention.
+            </p>
+        </div>
+
+        <!-- SVG 3: Animated scroll indicator -->
+        <div class="hero-scroll-wrap">
+            <a href="#work" class="hero-scroll-btn">
+                <svg class="scroll-svg" viewBox="0 0 40 60" fill="none" aria-hidden="true">
+                    <!-- Outer rounded rect -->
+                    <rect class="scroll-rect" x="1" y="1" width="38" height="58" rx="19" />
+                    <!-- Traveling dot inside -->
+                    <circle class="scroll-dot" cx="20" cy="12" r="4" />
+                    <!-- Down arrow at bottom -->
+                    <path class="scroll-chevron" d="M13 46 L20 54 L27 46" />
+                </svg>
+                <span class="scroll-label">Scroll</span>
+            </a>
+        </div>
+
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <span class="meta-num">11</span>
+                <span class="meta-label">Editorials</span>
+            </div>
+            <div class="hero-meta-sep"></div>
+            <div class="hero-meta-item">
+                <span class="meta-num">3</span>
+                <span class="meta-label">Collections</span>
+            </div>
+            <div class="hero-meta-sep"></div>
+            <div class="hero-meta-item">
+                <span class="meta-num">2024</span>
+                <span class="meta-label">Season</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ MARQUEE ══════════ -->
+    <div class="marquee-band" aria-hidden="true">
+        <div class="marquee-track">
+            <span>EDITORIAL</span><em>·</em>
+            <span>FASHION FILM</span><em>·</em>
+            <span>LOOKBOOK</span><em>·</em>
+            <span>CAMPAIGN</span><em>·</em>
+            <span>PORTRAIT</span><em>·</em>
+            <span>ATELIER</span><em>·</em>
+            <span>SAVOIR-FAIRE</span><em>·</em>
+            <span>EDITORIAL</span><em>·</em>
+            <span>FASHION FILM</span><em>·</em>
+            <span>LOOKBOOK</span><em>·</em>
+            <span>CAMPAIGN</span><em>·</em>
+            <span>PORTRAIT</span><em>·</em>
+            <span>ATELIER</span><em>·</em>
+            <span>SAVOIR-FAIRE</span><em>·</em>
+        </div>
+    </div>
+
+    <!-- SVG 4: Animated section ornament between marquee and featured -->
+    <div class="section-ornament" aria-hidden="true">
+        <svg class="ornament-svg" viewBox="0 0 400 50" fill="none">
+            <!-- Left line draws in -->
+            <path class="orn-line orn-line-left"  d="M 0 25 H 160" />
+            <!-- Center diamond / lozenge -->
+            <path class="orn-diamond" d="M 190 14 L 200 25 L 190 36 L 180 25 Z" />
+            <!-- Tiny cross inside -->
+            <line class="orn-cross" x1="200" y1="20" x2="200" y2="30" />
+            <line class="orn-cross" x1="195" y1="25" x2="205" y2="25" />
+            <!-- Right line draws in (reversed) -->
+            <path class="orn-line orn-line-right" d="M 400 25 H 240" />
+        </svg>
+    </div>
+
+    <!-- ══════════ FEATURED EDITORIAL ══════════ -->
+    <section class="featured" id="work">
+        <div class="featured-header">
+            <span class="section-index">01</span>
+            <span class="section-rule"></span>
+            <span class="section-label">Featured Editorial</span>
+        </div>
+
+        <div class="featured-grid">
+            <!-- Large left image -->
+            <div class="feat-img-wrap reveal-left">
+                <div class="feat-img-inner">
+                    <img src="src/E-Img2.png" alt="Black dress editorial — Velvet Nocturne" loading="lazy" decoding="async">
+                </div>
+                <div class="feat-img-caption">
+                    <span>AW 2024</span>
+                    <span>Velvet Nocturne</span>
+                </div>
+            </div>
+
+            <!-- Right column: text + image -->
+            <div class="feat-right reveal-right">
+                <div class="feat-text">
+                    <p class="section-eyebrow">Featured Work</p>
+                    <h2 class="section-title">Velvet<br><em>Nocturne</em></h2>
+                    <p class="section-body">A study in restraint. Black velvet against cream lace — an opposition that becomes harmony. Shot in an afternoon light that refused to hurry.</p>
+                    <a href="#" class="text-link">
+                        <span>View full editorial</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+
+                <div class="feat-img-sm">
+                    <div class="feat-img-inner">
+                        <img src="src/E-Img3.png" alt="Velvet lace collar portrait" loading="lazy" decoding="async">
+                    </div>
+                    <div class="feat-img-caption sm">
+                        <span>Portrait</span>
+                        <span>AW Collection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ COLLECTION GRID ══════════ -->
+    <section class="collection-section" id="collection">
+        <div class="collection-header">
+            <div class="col-header-left">
+                <span class="section-index">02</span>
+                <span class="section-rule"></span>
+                <span class="section-label">Collection</span>
+            </div>
+            <div class="col-header-right">
+                <h2 class="section-title">The<br><em>Archive</em></h2>
+                <p class="section-body">Seasons documented in light and cloth. Each image a sentence in a longer story about how we dress, and why.</p>
+            </div>
+        </div>
+
+        <!-- Bento-style grid -->
+        <div class="bento-grid">
+
+            <div class="bento-item bento-tall bento-1">
+                <div class="bento-img">
+                    <img src="src/E-Img8.png" alt="Cream linen look — The Linen Hours">
+                </div>
+                <div class="bento-info">
+                    <span class="b-num">01</span>
+                    <span class="b-title">The Linen Hours</span>
+                    <span class="b-tag">SS 2024</span>
+                </div>
+            </div>
+
+            <div class="bento-item bento-2">
+                <div class="bento-img">
+                    <img src="src/img2.jpg" alt="Monochrome portrait — Noir Study">
+                </div>
+                <div class="bento-info">
+                    <span class="b-num">02</span>
+                    <span class="b-title">Noir Study</span>
+                    <span class="b-tag">Portrait</span>
+                </div>
+            </div>
+
+            <div class="bento-item bento-3">
+                <div class="bento-img">
+                    <img src="src/E-Img6.png" alt="White lace editorial — White Light">
+                </div>
+                <div class="bento-info">
+                    <span class="b-num">03</span>
+                    <span class="b-title">White Light</span>
+                    <span class="b-tag">Editorial</span>
+                </div>
+            </div>
+
+            <div class="bento-item bento-wide bento-4">
+                <div class="bento-img">
+                    <img id="E-Image" src="src/E-Img1.png" alt="Amber blouse — Amber & Afternoon">
+                </div>
+                <div class="bento-info dark">
+                    <span class="b-num">04</span>
+                    <span class="b-title">Amber &amp; Afternoon</span>
+                    <span class="b-tag">SS 2024 — Amber Series</span>
+                </div>
+            </div>
+
+            <div class="bento-item bento-5">
+                <div class="bento-img">
+                    <img src="src/E-Img6.png" alt="Side profile at home — Still Room">
+                </div>
+                <div class="bento-info">
+                    <span class="b-num">05</span>
+                    <span class="b-title">Still Room</span>
+                    <span class="b-tag">Lookbook</span>
+                </div>
+            </div>
+
+            <div class="bento-item bento-6">
+                <div class="bento-img">
+                    <img src="src/img7.jpg" alt="Reading in yellow check — Pages & Pattern">
+                </div>
+                <div class="bento-info">
+                    <span class="b-num">06</span>
+                    <span class="b-title">Pages &amp; Pattern</span>
+                    <span class="b-tag">Campaign</span>
+                </div>
+            </div>
+
+            <div class="bento-item bento-7">
+                <div class="bento-img">
+                    <img src="src/img8.jpg" alt="Holding wildflowers — Gathered Wild">
+                </div>
+                <div class="bento-info">
+                    <span class="b-num">07</span>
+                    <span class="b-title">Gathered Wild</span>
+                    <span class="b-tag">SS 2024</span>
+                </div>
+            </div>
+
+        </div>
+    <!-- ══════════ SVG SCROLL WAVE DIVIDER ══════════ -->
+    <div class="scroll-wave-wrap" aria-hidden="true">
+        <svg class="scroll-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
+            <path class="wave-path-bg" d="M0,32L60,42.7C120,53,240,75,360,80C480,85,600,75,720,58.7C840,43,960,21,1080,21.3C1200,21,1320,43,1380,53.3L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z" fill="var(--ink)"></path>
+            <path class="wave-line-stroke" d="M0,32C240,90,480,10,720,60C960,110,1200,20,1440,64" stroke="var(--rose)" stroke-width="2" fill="none"></path>
+        </svg>
+    </div>
+
+    <!-- ══════════ PHILOSOPHY STATEMENT ══════════ -->
+    <section class="philosophy-section">
+        <div class="philo-image">
+            <img src="src/E-Img7.png" alt="Philosophy — editorial portrait with flowers">
+            <div class="philo-img-overlay"></div>
+        </div>
+        <div class="philo-content">
+            <header class="philo-header">
+                <span class="section-index light">03</span>
+                <span class="section-rule light"></span>
+                <span class="section-label light">Philosophy</span>
+            </header>
+
+            <!-- SVG 5: Animated bracket corners framing the quote -->
+            <div class="quote-bracket-wrap" aria-hidden="true">
+                <svg class="quote-bracket-svg" viewBox="0 0 320 130" fill="none">
+                    <!-- Top-left corner bracket -->
+                    <path class="bracket-path bracket-tl" d="M 60 12 H 12 V 60" />
+                    <!-- Top-right corner bracket -->
+                    <path class="bracket-path bracket-tr" d="M 260 12 H 308 V 60" />
+                    <!-- Bottom-left corner bracket -->
+                    <path class="bracket-path bracket-bl" d="M 60 118 H 12 V 70" />
+                    <!-- Bottom-right corner bracket -->
+                    <path class="bracket-path bracket-br" d="M 260 118 H 308 V 70" />
+                    <!-- Center top & bottom hairlines -->
+                    <path class="bracket-hairline hairline-top"    d="M 80 12 H 240" />
+                    <path class="bracket-hairline hairline-bottom" d="M 80 118 H 240" />
+                </svg>
+            </div>
+
+            <blockquote class="philo-quote">
+                <span class="open-quote">"</span>
+                Fashion is the art of dressing with a quiet confidence — not to be seen, but to be felt.
+                <span class="close-quote">"</span>
+            </blockquote>
+            <div class="philo-tags">
+                <span class="philo-tag">Slow Fashion</span>
+                <span class="philo-tag">Editorial</span>
+                <span class="philo-tag">Intentional Design</span>
+            </div>
+            <div class="philo-line"></div>
+            <p class="philo-sub">Every garment tells a story of restraint, craft, and the beauty that emerges when nothing is forced.</p>
+        </div>
+    </section>
+
+    <!-- ══════════ ABOUT ══════════ -->
+    <section class="about-section" id="about">
+        <div class="about-wrap">
+            <!-- Image stack -->
+            <div class="about-media">
+                <div class="about-img-primary">
+                    <img src="src/E-Img1.png" alt="MAISON — editorial portrait">
+                </div>
+                <div class="about-img-secondary">
+                    <img src="src/E-Img5.png" alt="Reading — editorial portrait">
+                </div>
+                <div class="about-year-badge">
+                    <span>2024</span>
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="about-content">
+                <header class="about-header-row">
+                    <span class="section-index">04</span>
+                    <span class="section-rule"></span>
+                    <span class="section-label">About</span>
+                </header>
+                <h2 class="section-title">A Practice<br><em>in Beauty</em></h2>
+                <p class="section-body">MAISON is an editorial fashion portfolio rooted in the belief that great clothing is not worn — it is inhabited. Each shoot is a conversation between fabric, light, and the person wearing both.</p>
+                <p class="section-body">Based between Paris and Tokyo, we collaborate with designers who understand that restraint is its own form of extravagance.</p>
+
+                <div class="about-stats">
+                    <div class="a-stat">
+                        <span class="a-num">7+</span>
+                        <span class="a-label">Years Active</span>
+                    </div>
+                    <div class="stat-sep"></div>
+                    <div class="a-stat">
+                        <span class="a-num">40+</span>
+                        <span class="a-label">Campaigns</span>
+                    </div>
+                    <div class="stat-sep"></div>
+                    <div class="a-stat">
+                        <span class="a-num">12</span>
+                        <span class="a-label">Brand Partners</span>
+                    </div>
+                </div>
+
+                <a href="#contact" class="pill-btn">
+                    <span>Start a project</span>
+                    <span class="pill-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ CONTACT ══════════ -->
+    <section class="contact-section" id="contact">
+        <div class="contact-text">
+            <header class="contact-header-row">
+                <span class="section-index">05</span>
+                <span class="section-rule"></span>
+                <span class="section-label">Contact</span>
+            </header>
+            <h2 class="contact-headline">
+                Let's make<br>something<br><em>beautiful.</em>
+            </h2>
+            <div class="contact-links">
+                <a href="mailto:hello@maison.co" class="contact-link">
+                    <span class="cl-label">Email</span>
+                    <span class="cl-value">hello@maison.co</span>
+                    <span class="cl-arrow">↗</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <span class="cl-label">Social</span>
+                    <span class="cl-value">Instagram</span>
+                    <span class="cl-arrow">↗</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <span class="cl-label">Social</span>
+                    <span class="cl-value">Pinterest</span>
+                    <span class="cl-arrow">↗</span>
+                </a>
+            </div>
+        </div>
+        <div class="contact-visual">
+            <img src="src/E-Img6.png" alt="Amber portrait — contact">
+            <div class="contact-overlay"></div>
+        </div>
+    </section>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer class="footer">
+        <!-- SVG 6: Animated signature flourish above footer brand -->
+        <div class="footer-signature" aria-hidden="true">
+            <svg class="sig-svg" viewBox="0 0 340 60" fill="none">
+                <!-- Main signature sweep -->
+                <path class="sig-path"
+                    d="M 8 44 C 30 10, 70 52, 110 30 C 140 14, 160 46, 200 28 C 230 14, 260 48, 300 24 C 318 14, 328 38, 332 30" />
+                <!-- Small accent loop -->
+                <path class="sig-path sig-loop"
+                    d="M 80 44 C 88 28, 100 40, 95 50 C 90 58, 78 54, 82 46" />
+                <!-- Dot at end -->
+                <circle class="sig-dot" cx="332" cy="30" r="2.5" />
+            </svg>
+        </div>
+        <div class="footer-top">
+            <div class="footer-brand">MAISON<span class="brand-dot">.</span></div>
+            <p class="footer-tagline">Quiet luxury. Intentional design.</p>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2024 Maison Studio. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">Behance</a>
+            </div>
+            <a href="#home" class="back-top">
+                <span>↑</span> Top
+            </a>
+        </div>
+    </footer>
+
+    <!-- ══════════ GSAP + LENIS + MAIN JS ══════════ -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
